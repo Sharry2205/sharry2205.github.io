@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
+import {
+  MdArrowOutward,
+  MdOutlineAutoGraph,
+  MdOutlineEmojiObjects,
+  MdOutlineRocketLaunch,
+  MdOutlineSchema,
+} from "react-icons/md";
 
 interface Props {
-  image: string;
+  image?: string;
   alt?: string;
   video?: string;
   link?: string;
+  title?: string;
+  subtitle?: string;
+  sticker?: "strategy" | "gtm" | "roadmap";
 }
 
 const WorkImage = (props: Props) => {
@@ -21,6 +30,19 @@ const WorkImage = (props: Props) => {
     }
   };
 
+  const StickerIcon = (() => {
+    switch (props.sticker) {
+      case "strategy":
+        return MdOutlineEmojiObjects;
+      case "gtm":
+        return MdOutlineRocketLaunch;
+      case "roadmap":
+        return MdOutlineSchema;
+      default:
+        return MdOutlineAutoGraph;
+    }
+  })();
+
   const content = (
     <>
       {props.link && (
@@ -28,7 +50,21 @@ const WorkImage = (props: Props) => {
           <MdArrowOutward />
         </div>
       )}
-      <img src={props.image} alt={props.alt} />
+      {props.image ? (
+        <img src={props.image} alt={props.alt} />
+      ) : (
+        <div className={`work-fallback work-fallback-${props.sticker ?? "default"}`}>
+          <div className="work-fallback-sticker">
+            <StickerIcon />
+          </div>
+          <div className="work-fallback-body">
+            <div className="work-fallback-title">{props.title ?? props.alt}</div>
+            {props.subtitle && (
+              <div className="work-fallback-subtitle">{props.subtitle}</div>
+            )}
+          </div>
+        </div>
+      )}
       {isVideo && <video src={video} autoPlay muted playsInline loop></video>}
     </>
   );

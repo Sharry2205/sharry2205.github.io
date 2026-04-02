@@ -191,6 +191,111 @@
   position: relative;
 }
 
+.work-fallback {
+  width: min(560px, 100%);
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: radial-gradient(
+      120% 140% at 0% 0%,
+      rgba(94, 234, 212, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 140% at 100% 0%,
+      rgba(160, 124, 255, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 140% at 50% 120%,
+      rgba(255, 61, 129, 0.16),
+      transparent 55%
+    ),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.work-fallback::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  background: conic-gradient(
+    from 180deg,
+    rgba(94, 234, 212, 0.18),
+    rgba(160, 124, 255, 0.18),
+    rgba(255, 61, 129, 0.16),
+    rgba(94, 234, 212, 0.18)
+  );
+  filter: blur(35px);
+  opacity: 0.55;
+  animation: workGlow 10s linear infinite;
+}
+
+@keyframes workGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.work-fallback-body {
+  position: relative;
+  padding: 18px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+}
+
+.work-fallback-title {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.work-fallback-subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: 300;
+}
+
+.work-fallback-sticker {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+.work-fallback-sticker svg {
+  font-size: 26px;
+  color: rgba(234, 229, 236, 0.95);
+}
+
+.work-fallback-strategy .work-fallback-sticker {
+  box-shadow: 0 10px 25px rgba(255, 61, 129, 0.18);
+}
+
+.work-fallback-gtm .work-fallback-sticker {
+  box-shadow: 0 10px 25px rgba(94, 234, 212, 0.18);
+}
+
+.work-fallback-roadmap .work-fallback-sticker {
+  box-shadow: 0 10px 25px rgba(160, 124, 255, 0.18);
+}
+
 .work-link {
   position: absolute;
   bottom: 10px;

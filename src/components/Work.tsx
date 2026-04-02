@@ -16,19 +16,19 @@ const projects = [
     title: "Entrepreneurship — Product Strategy",
     category: "Venture feasibility & product thinking",
     tools: "Business model, funding plan, market analysis, pitch deck",
-    image: "/images/strategy.webp",
+    sticker: "strategy" as const,
   },
   {
     title: "Competitive Analysis & Go-to-Market Plan",
     category: "Positioning, STP, KPI scorecard",
     tools: "Competitor benchmarking, segmentation, differentiation, marketing plan",
-    image: "/images/gtm.webp",
+    sticker: "gtm" as const,
   },
   {
     title: "ERP Redesign Roadmap",
     category: "Student-facing workflow improvements",
     tools: "Roadmap, UX improvements, cross-functional coordination, workflow optimization",
-    image: "/images/erp.webp",
+    sticker: "roadmap" as const,
   },
 ];
 
@@ -115,6 +115,9 @@ const Work = () => {
                         image={project.image}
                         alt={project.title}
                         link={project.link}
+                        title={project.title}
+                        subtitle={project.category}
+                        sticker={project.sticker}
                       />
                     </div>
                   </div>
