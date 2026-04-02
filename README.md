@@ -4,10 +4,6 @@ Personal 3D portfolio built with React, TypeScript, Three.js (React Three Fiber)
 
 Live portfolio: **[sharry2205.github.io](https://sharry2205.github.io/)**
 
-Featured PM project: **ClaimFlow AI**
-- Live dashboard: [ClaimFlow AI live dashboard](https://sharry2205.github.io/EMA-APM-Project/)
-- Repo: [Sharry2205/EMA-APM-Project](https://github.com/Sharry2205/EMA-APM-Project)
-
 <!-- Preview image intentionally omitted (template screenshot removed). -->
 
 ## Table of Contents
