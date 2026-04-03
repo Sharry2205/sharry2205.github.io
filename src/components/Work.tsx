@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
@@ -35,34 +35,14 @@ const projects = [
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const trackContainerRef = useRef<HTMLDivElement | null>(null);
-  const [slideWidth, setSlideWidth] = useState(0);
-
-  useEffect(() => {
-    const el = trackContainerRef.current;
-    if (!el) return;
-
-    const update = () => {
-      setSlideWidth(el.getBoundingClientRect().width);
-    };
-
-    update();
-    const ro = new ResizeObserver(() => update());
-    ro.observe(el);
-    window.addEventListener("resize", update);
-
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", update);
-    };
-  }, []);
+  const project = projects[currentIndex];
 
   const goToSlide = useCallback(
     (index: number) => {
       if (isAnimating) return;
       setIsAnimating(true);
       setCurrentIndex(index);
-      setTimeout(() => setIsAnimating(false), 500);
+      setTimeout(() => setIsAnimating(false), 250);
     },
     [isAnimating]
   );
@@ -106,44 +86,33 @@ const Work = () => {
           </button>
 
           {/* Slides */}
-          <div className="carousel-track-container" ref={trackContainerRef}>
-            <div
-              className="carousel-track"
-              style={{
-                transform: `translate3d(-${currentIndex * slideWidth}px, 0, 0)`,
-              }}
-            >
-              {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
-                  <div className="carousel-content">
-                    <div className="carousel-info">
-                      <div className="carousel-number">
-                        <h3>0{index + 1}</h3>
-                      </div>
-                      <div className="carousel-details">
-                        <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
-                        <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
-                          <p>{project.tools}</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage
-                        image={project.image}
-                        alt={project.title}
-                        link={project.link}
-                        title={project.title}
-                        subtitle={project.category}
-                        sticker={project.sticker}
-                      />
+          <div className="carousel-track-container">
+            <div className="carousel-slide" key={currentIndex}>
+              <div className="carousel-content">
+                <div className="carousel-info">
+                  <div className="carousel-number">
+                    <h3>0{currentIndex + 1}</h3>
+                  </div>
+                  <div className="carousel-details">
+                    <h4>{project.title}</h4>
+                    <p className="carousel-category">{project.category}</p>
+                    <div className="carousel-tools">
+                      <span className="tools-label">Tools & Features</span>
+                      <p>{project.tools}</p>
                     </div>
                   </div>
                 </div>
-              ))}
+                <div className="carousel-image-wrapper">
+                  <WorkImage
+                    image={project.image}
+                    alt={project.title}
+                    link={project.link}
+                    title={project.title}
+                    subtitle={project.category}
+                    sticker={project.sticker}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
