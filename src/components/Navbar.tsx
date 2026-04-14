@@ -46,7 +46,7 @@ const Navbar = () => {
           PP
         </a>
         <a
-          href="https://www.linkedin.com/in/priyanshu/"
+          href="https://www.linkedin.com/in/priyanshu-pareek-225942295"
           className="navbar-connect"
           data-cursor="disable"
           target="_blank"
