@@ -52,7 +52,7 @@ const Navbar = () => {
           target="_blank"
           rel="noreferrer"
         >
-          linkedin.com/in/priyanshu
+         linkedin.com/in/priyanshu-pareek-225942295
         </a>
         <ul>
           <li>
